@@ -1,6 +1,33 @@
 ![Python](https://img.shields.io/badge/python->=3.5-green.svg)
 ![Platform](https://img.shields.io/badge/platform-windows)
 
+# spaces to _
+A very simple python program that finds spaces in filenames and replaces them with _
+Does this for every file and directory in a directory that is passed in as argument 1
+
+## Usage
+```bash
+python SingleImageVisWatermark.py "D:\fully\qualified\path\to\my watermark.png" "c:\fully\qualified\path\to\my image.jpg"
+
+```
+## Registry hack
+Type regedit and press Enter to open the Registry Editor.
+
+Navigate to the following path: HKEY_CLASSES_ROOT\Directory\shell
+
+Right-click on the shell key, select New > Key, and name it whatever you want the context menu item to be
+
+With the new key selected, right-click in the right pane, select New > String Value, and name it Icon. Double-click the new Icon value, type cmd.exe, and press Enter
+
+Right-click on the new key you created, select New > Key, and name it command.
+
+With the command key selected, in the right pane, double-click the Default value. In the Value data box, type 
+
+cmd.exe /k python "D:\fully\qualified\path\to\spacesto_.py" %1
+
+Note %1 is passed in fully qualified and with quotes. 
+As soon as you enter this in right click on a directory in explorer and all .png .jpg .jpeg .jfif files in the directory will be watermarked with your watermark
+
 # SingleImageVisWatermark
 Simple python script to apply visable watermark image to lower right hand corner of target image
 
@@ -18,10 +45,14 @@ The goal of this python script is to allow for the creation of a right click men
 ## Registry Hack
 
 Type regedit and press Enter to open the Registry Editor
+
 Navigate to the following path: HKEY_CLASSES_ROOT\*\shell
+
 Right-click on the shell key, select New > Key, and name it whatever you want the context menu item to be
-2.With the new key selected, right-click in the right pane, select New > String Value, and name it Icon. Double-click the new Icon value, type cmd.exe, and press Enter
-3. Right-click on the new key you created, select New > Key, and name it command.
+
+With the new key selected, right-click in the right pane, select New > String Value, and name it Icon. Double-click the new Icon value, type cmd.exe, and press Enter
+
+Right-click on the new key you created, select New > Key, and name it command.
 With the command key selected, in the right pane, double-click the Default value. In the Value data box, type 
 
 cmd.exe /k python "D:\fully\qualified\path\to\SingleImageVisWatermark.py" "D:\fully\qualified\path\to\my watermark.png" %1
@@ -45,10 +76,15 @@ NOTE. the resulting image will be converted to a .jpg file
 
 ## Registry hack
 Type regedit and press Enter to open the Registry Editor.
+
 Navigate to the following path: HKEY_CLASSES_ROOT\Directory\shell
+
 Right-click on the shell key, select New > Key, and name it whatever you want the context menu item to be
+
 With the new key selected, right-click in the right pane, select New > String Value, and name it Icon. Double-click the new Icon value, type cmd.exe, and press Enter
+
 Right-click on the new key you created, select New > Key, and name it command.
+
 With the command key selected, in the right pane, double-click the Default value. In the Value data box, type 
 
 cmd.exe /k python "D:\fully\qualified\path\to\DirectoryeVisWatermark.py" "D:\fully\qualified\path\to\my watermark.png" %1
